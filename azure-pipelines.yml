@@ -24,12 +24,12 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    azureSubscription: 'PASTE EXACT SERVICE CONNECTION NAME'
+    azureSubscription: 'EAS PYAR KO NAAM'
 
 - task: TerraformTaskV4@4
   displayName: Terraform Apply
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    azureSubscription: 'PASTE EXACT SERVICE CONNECTION NAME'
+    azureSubscription: 'EAS PYAR KO NAAM'
     args: '-auto-approve'
