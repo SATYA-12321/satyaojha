@@ -13,4 +13,5 @@ resource "azurerm_storage_account" "satya_storage" {
 
 }
 
-# satya ojha nahi kar sakte ha
+# eak code bakend ka dena ha,
+#  kaise karoo, ki ho jai
