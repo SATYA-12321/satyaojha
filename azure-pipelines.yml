@@ -26,7 +26,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    environmentServiceNameAzureRM: 'workload identity federation'
+    environmentServiceNameAzureRM: 'EAS PYAR KO NAAM'
 
 # Terraform Apply
 - task: TerraformTaskV4@4
@@ -34,6 +34,6 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    environmentServiceNameAzureRM: 'workload identity federation'
+    environmentServiceNameAzureRM: 'EAS PYAR KO NAAM'
     args: '-auto-approve'
 
