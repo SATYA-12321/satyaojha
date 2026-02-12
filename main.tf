@@ -12,3 +12,5 @@ resource "azurerm_storage_account" "satya_storage" {
 
 
 }
+
+# satya ojha nahi kar sakte ha
