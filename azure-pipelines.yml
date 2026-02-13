@@ -17,7 +17,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    backendServiceArm: 'EAS PYAR KO NAAM'
+    backendServiceArm: 'Workload Identity federation details'
     backendAzureRmResourceGroupName: 'satya-rg'
     backendAzureRmStorageAccountName: 'rolex-'
     backendAzureRmContainerName: 'satya-container'
@@ -28,12 +28,12 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    environmentServiceNameAzureRM: 'EAS PYAR KO NAAM'
+    environmentServiceNameAzureRM: 'Workload Identity federation details'
 
 - task: TerraformTask@5
   displayName: 'Terraform Apply'
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    environmentServiceNameAzureRM: 'EAS PYAR KO NAAM'
+    environmentServiceNameAzureRM: 'Workload Identity federation details'
     args: '-auto-approve'
