@@ -17,7 +17,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    backendServiceArm: 'AZURE-SERVICE-CONNECTION'
+    backendServiceArm: 'EAS PYAR KO NAAM'
     backendAzureRmResourceGroupName: 'satya-rg'
     backendAzureRmStorageAccountName: 'rolex-'
     backendAzureRmContainerName: 'satya-container'
