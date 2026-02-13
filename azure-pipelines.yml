@@ -1,13 +1,39 @@
 
+
 trigger: none
 
-pool: MARA PAHLA AGENT POOL
-
+pool:
+  name: MARA PAHLA AGENT POOL   # yahan apna agent pool ka naam
 
 steps:
 
 - task: TerraformInstaller@1
+  displayName: 'Install Terraform'
   inputs:
-    terraformVersion: 'latest'
+    terraformVersion: '1.12.1'
 
+- task: TerraformTask@5
+  displayName: 'Terraform Init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'AZURE-SERVICE-CONNECTION'
+    backendAzureRmResourceGroupName: 'satya-rg'
+    backendAzureRmStorageAccountName: 'rolex-'
+    backendAzureRmContainerName: 'satya-container'
+    backendAzureRmKey: 'terraform.tfstate'
 
+- task: TerraformTask@5
+  displayName: 'Terraform Plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'EAS PYAR KO NAAM'
+
+- task: TerraformTask@5
+  displayName: 'Terraform Apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'EAS PYAR KO NAAM'
+    args: '-auto-approve'
