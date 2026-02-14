@@ -1,4 +1,5 @@
-trigger: none
+trigger:
+  - main
 
 pool:
   name: MARA PAHLA AGENT POOL
@@ -6,18 +7,21 @@ pool:
 steps:
 
 - task: TerraformInstaller@1
+  displayName: "Install Terraform"
   inputs:
     terraformVersion: '1.14.5'
 
-- powershell: |
-    terraform -version
-    terraform init
-  displayName: "Terraform Init via CMD"
-
-
 - task: TerraformTask@5
+  displayName: "Terraform Init"
   inputs:
     provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/satyaojha'
+    command: 'init'
+    backendServiceArm: 'workload identity federation'
+
+- task: TerraformTask@5
+  displayName: "Terraform Apply - Create RG"
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
     environmentServiceNameAzureRM: 'workload identity federation'
+    commandOptions: '-auto-approve'
