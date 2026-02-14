@@ -1,31 +1,19 @@
-
-
 trigger: none
 
-pool: MARA PAHLA AGENT POOL   # yahan apna agent pool ka naam
+pool:
+  name: MARA PAHLA AGENT POOL
 
 steps:
-
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: 'Write-Host "Hello World"'
-
 
 - task: TerraformInstaller@1
   inputs:
     terraformVersion: '1.14.5'
 
-- task: TerraformTask@5
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/satyaojha'
-    backendServiceArm: 'workload identity federation'
-    backendAzureRmResourceGroupName: 'satya-rg1'
-    backendAzureRmStorageAccountName: 'satyastorage6'
-    backendAzureRmContainerName: 'satyacontainers'
-    backendAzureRmKey: 'satya.tf'
+- powershell: |
+    terraform -version
+    terraform init
+  displayName: "Terraform Init via CMD"
+
 
 - task: TerraformTask@5
   inputs:
