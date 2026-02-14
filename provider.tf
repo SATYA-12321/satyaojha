@@ -12,7 +12,7 @@ terraform {
 #   container_name       = "satya-container"
 #   key                  = "terraform.tfstate"
 # }
-# }
+ }
 
 provider "azurerm" {
   features {}
