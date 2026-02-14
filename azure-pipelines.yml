@@ -2,38 +2,33 @@
 
 trigger: none
 
-pool:
-  name: MARA PAHLA AGENT POOL   # yahan apna agent pool ka naam
+pool: MARA PAHLA AGENT POOL   # yahan apna agent pool ka naam
 
 steps:
 
-- task: TerraformInstaller@1
-  displayName: 'Install Terraform'
+- task: PowerShell@2
   inputs:
-    terraformVersion: '1.12.1'
+    targetType: 'inline'
+    script: 'Write-Host "Hello World"'
+
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
 
 - task: TerraformTask@5
-  displayName: 'Terraform Init'
   inputs:
     provider: 'azurerm'
     command: 'init'
-    backendServiceArm: 'Workload Identity federation details'
-    backendAzureRmResourceGroupName: 'satya-rg'
-    backendAzureRmStorageAccountName: 'rolex-'
-    backendAzureRmContainerName: 'satya-container'
-    backendAzureRmKey: 'terraform.tfstate'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/satyaojha'
+    backendServiceArm: 'workload identity federation'
+    backendAzureRmResourceGroupName: 'satya-rg1'
+    backendAzureRmStorageAccountName: 'satyastorage6'
+    backendAzureRmContainerName: 'satyacontainers'
+    backendAzureRmKey: 'satya.tf'
 
 - task: TerraformTask@5
-  displayName: 'Terraform Plan'
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    environmentServiceNameAzureRM: 'Workload Identity federation details'
-
-- task: TerraformTask@5
-  displayName: 'Terraform Apply'
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    environmentServiceNameAzureRM: 'Workload Identity federation details'
-    args: '-auto-approve'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/satyaojha'
+    environmentServiceNameAzureRM: 'workload identity federation'
