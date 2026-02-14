@@ -6,13 +6,13 @@ terraform {
     }
   }
 
-  backend "azurerm" {
-    resource_group_name  = "satya-rg"
-    storage_account_name = "satyastorage976496"
-    container_name       = "satya-container"
-    key                  = "terraform.tfstate"
-  }
-}
+#  backend "azurerm" {
+#   resource_group_name  = "satya-rg"
+#    storage_account_name = "satyastorage976496"
+#   container_name       = "satya-container"
+#   key                  = "terraform.tfstate"
+# }
+# }
 
 provider "azurerm" {
   features {}
