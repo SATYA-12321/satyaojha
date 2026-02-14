@@ -18,10 +18,3 @@ steps:
     command: 'init'
     backendServiceArm: 'workload identity federation'
 
-- task: TerraformTask@5
-  displayName: "Terraform Apply - Create RG"
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    environmentServiceNameAzureRM: 'workload identity federation'
-    commandOptions: '-auto-approve'
